@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #a57df4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .register-container {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0px 0px 10px #ffffff;
+      text-align: left;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .header {
+      background-color: #a57df4;
+      padding: 10px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .header h2 {
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #666666;
+      font-weight: bold;
+    }
+
+    .input-group input {
+      width: calc(100% - 22px);
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    .error-message {
+      color: #ff0000;
+      margin-top: 5px;
+    }
+
+    .button {
+      background-color: #a57df4;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .button:hover {
+      background-color: #8964cc;
+    }
+
+    .login-link {
+      color: #a57df4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <div class="header">
+      <h2>Register</h2>
+    </div>
+    <form id="registerForm" onsubmit="return validateForm()">
+      <div class="input-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName">
+        <div id="firstNameError" class="error-message"></div>
+      </div>
+      <div class="input-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName">
+        <div id="lastNameError" class="error-message"></div>
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+        <div id="emailError" class="error-message"></div>
+      </div>
+      <div class="input-group">
+        <label for="newUsername">Username</label>
+        <input type="text" id="newUsername" name="newUsername">
+        <div id="usernameError" class="error-message"></div>
+      </div>
+      <div class="input-group">
+        <label for="newPassword">Password</label>
+        <input type="password" id="newPassword" name="newPassword">
+        <div id="passwordError" class="error-message"></div>
+      </div>
+      <div class="input-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword">
+        <div id="confirmPasswordError" class="error-message"></div>
+      </div>
+      <button type="submit" class="button">Register</button>
+    </form>
+    <div>
+      <p>Already have an account? <a href="login.html" class="login-link">LOGIN</a></p>
+    </div>
+  </div>
+
+  <script>
+    function validateForm() {
+      var firstName = document.getElementById('firstName').value;
+      var lastName = document.getElementById('lastName').value;
+      var email = document.getElementById('email').value;
+      var username = document.getElementById('newUsername').value;
+      var password = document.getElementById('newPassword').value;
+      var confirmPassword = document.getElementById('confirmPassword').value;
+
+      var isValid = true;
+
+      if (firstName === '') {
+        document.getElementById('firstNameError').innerText = 'Please enter your first name.';
+        isValid = false;
+      } else {
+        document.getElementById('firstNameError').innerText = '';
+      }
+
+      if (lastName === '') {
+        document.getElementById('lastNameError').innerText = 'Please enter your last name.';
+        isValid = false;
+      } else {
+        document.getElementById('lastNameError').innerText = '';
+      }
+
+      if (email === '') {
+        document.getElementById('emailError').innerText = 'Please enter your email address.';
+        isValid = false;
+      } else {
+        document.getElementById('emailError').innerText = '';
+      }
+
+      if (username === '') {
+        document.getElementById('usernameError').innerText = 'Please enter a username.';
+        isValid = false;
+      } else {
+        document.getElementById('usernameError').innerText = '';
+      }
+
+      if (password === '') {
+        document.getElementById('passwordError').innerText = 'Please enter a password.';
+        isValid = false;
+      } else {
+        document.getElementById('passwordError').innerText = '';
+      }
+
+      if (confirmPassword === '') {
+        document.getElementById('confirmPasswordError').innerText = 'Please confirm your password.';
+        isValid = false;
+      } else if (password !== confirmPassword) {
+        document.getElementById('confirmPasswordError').innerText = 'Passwords do not match.';
+        isValid = false;
+      } else {
+        document.getElementById('confirmPasswordError').innerText = '';
+      }
+
+      if (isValid) {
+        window.location.href = 'success.html';
+      }
+
+      return isValid;
+    }
+  </script>
+</body>
+</html>
